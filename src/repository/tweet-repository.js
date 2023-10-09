@@ -1,7 +1,7 @@
 const { off } = require('../models/comment');
 const Tweet = require('../models/tweet');
 
-class tweetRepository {
+class TweetRepository {
 
     async create(data) {
         try {
@@ -31,15 +31,6 @@ class tweetRepository {
         }
     }
 
-    async update(tweetId, data) {
-        try {
-            const tweet = await Tweet.findByIdAndUpdate(tweetId, data, {new: true});
-            return tweet;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     async destroy(id) {
         try {
             const tweet = await Tweet.findByIdAndRemove(id);
@@ -60,5 +51,4 @@ class tweetRepository {
 
 }
 
-
-module.exports = tweetRepository;
+module.exports = TweetRepository;
