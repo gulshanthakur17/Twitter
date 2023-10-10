@@ -1,4 +1,3 @@
-const { off } = require('../models/comment');
 const Tweet = require('../models/tweet');
 
 class TweetRepository {
