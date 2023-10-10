@@ -1,9 +1,10 @@
-const express = require('express');
-const connect = require('./config/databse');
+import express from 'express';
+import { connect } from './config/databse.js';
 
-const TweetService = require('./services/tweet-service');
 
 const app = express();
+
+import service from './services/tweet-service.js'
 
 
 app.listen(4000, async () => {
@@ -11,10 +12,10 @@ app.listen(4000, async () => {
     await connect();
     console.log('MongoDb Connected');
 
-    let service = new TweetService();
-    const tweet = await service.create({
-        content: 'is #working working #twitter'
-    });
-    console.log(tweet);
+
+    let ser = new service();
+    await ser.create({
+        content: 'Done with #refactor'
+    })
 
 });
