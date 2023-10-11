@@ -8,12 +8,6 @@ const tweetSchema = new mongoose.Schema({
     },
     
 
-    hashtags: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Hashtag'
-        }
-    ]
 }, {timestamps: true});
 
 
