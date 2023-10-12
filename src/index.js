@@ -1,21 +1,24 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+
+
 import { connect } from './config/databse.js';
+
+import apiRoutes from './routes/index.js';
 
 
 const app = express();
 
-import service from './services/tweet-service.js'
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use('/api', apiRoutes);
+
 
 
 app.listen(4000, async () => {
     console.log('Server Started');
     await connect();
     console.log('MongoDb Connected');
-
-
-    let ser = new service();
-    await ser.create({
-        content: 'Done with #Code'
-    })
 
 });
