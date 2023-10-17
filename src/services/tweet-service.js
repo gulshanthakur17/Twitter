@@ -26,11 +26,14 @@ class TweetService {
         alreadyPresentTags.forEach((tag) => {
             tag.tweets.push(tweet.id);
             tag.save();
-        })
+        });
 
         return tweet;
+    }
 
-
+    async get(tweetId) {
+        const tweet = await this.tweetRepository.getWithComments(tweetId);
+        return tweet;
     }
 }
 
